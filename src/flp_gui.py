@@ -32,7 +32,7 @@ from translations import t, LANGUAGES, DEFAULT_LANG
 
 
 APP_NAME = "FLP Organizer"
-APP_VERSION = "1.5.5"
+APP_VERSION = "1.6.0"
 AUTHOR = "Matt Danieli"
 PAYPAL_URL = "https://paypal.me/mattdanieli"
 BATCH_LIMIT = 30
