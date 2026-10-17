@@ -77,7 +77,7 @@ def _decode_color_payload(payload: bytes) -> int:
 PATTERN_BASE_VAL = 20480   # item_index > PATTERN_BASE_VAL => pattern clip
 MAX_TRACKS = 500           # FL Studio 21+ has 500 playlist tracks
 
-ITEM_SIZE_CANDIDATES = (32, 60, 64, 80, 320)  # smallest first — 80 is FL 25+
+ITEM_SIZE_CANDIDATES = (32, 60, 64, 80, 88, 320)  # smallest first — 80 = FL 24/25, 88 = FL 2026
 
 
 # ----- Sort mode constants -----
@@ -208,6 +208,7 @@ class ValidationReport:
 KNOWN_GOOD_FL_VERSIONS = {
     "24": "FL Studio 24 (66-byte TRACK_DATA payload)",
     "25": "FL Studio 25 (70-byte TRACK_DATA payload)",
+    "26": "FL Studio 2026 (70-byte TRACK_DATA payload, 88-byte playlist items)",
 }
 
 # TRACK_DATA payload sizes seen in the wild. The writer doesn't care about the
