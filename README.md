@@ -75,9 +75,17 @@ FLP Organizer parses the file, identifies every real clip, groups them by the ch
 
 A typical run on a medium project modifies around 40–100 bytes in a 1–5 MB file. Because nothing else is touched, the risk of introducing corruption is effectively zero — as long as the format detection is correct for your FL Studio version.
 
-### A note on FL Studio 25
+### Supported FL Studio versions
 
-As of FL Studio 25.1.6, each playlist item occupies **320 bytes** on disk (previous versions used 60 or 32). This change isn't publicly documented by Image-Line; I discovered it by comparing the hex dump of a real project against the previously known layouts. FLP Organizer auto-detects the item size by looking at the `pattern_base` field (always `20480` for real items) across several candidate sizes.
+Each playlist clip is stored as a fixed-size record, and the size has changed between FL Studio versions. Image-Line doesn't document this; the sizes below were found by comparing hex dumps of real projects.
+
+| FL Studio version | Clip record size | Status |
+|---|---|---|
+| FL Studio 24 | 80 bytes | Tested |
+| FL Studio 25 | 80 bytes | Tested |
+| FL Studio 2026 (26.x) | 88 bytes | Tested (since v1.6.0) |
+
+FLP Organizer detects the record size automatically by checking the `pattern_base` field (always `20480` for real clips) across several candidate sizes.
 
 If a future FL version changes the layout again, the auto-detect may fail. In that case please open an issue and attach a small test project.
 
