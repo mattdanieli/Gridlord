@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.0] - 2026-10-17
+
+### Added
+- **FL Studio 2026 support.** FL Studio 2026 (version 26.x) stores each
+  playlist clip in 88 bytes instead of the 80 bytes used by FL 24/25.
+  Earlier versions of the tool didn't recognise that size, found zero
+  clips, and had nothing to reorganize. 88 is now a recognised item size.
+- The compatibility validator lists FL Studio 2026 as a tested version.
+
+### Notes
+- Verified on a real FL Studio 26.1.1 project: all clips are detected,
+  only the track-index bytes change, and the output re-parses cleanly
+  with the same file size.
+- Mute preservation, auto-color and auto-rename use the same 70-byte
+  TRACK_DATA layout as FL 25, which FL 2026 keeps. They have not yet been
+  checked by opening the output in FL Studio 2026.
+
 ## [1.5.5] - 2026-04-26
 
 ### Added
