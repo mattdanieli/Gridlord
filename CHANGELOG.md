@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.1] - 2026-10-19
+
+### Fixed
+- **"Event overruns FLdt boundary" error on FL Studio 2026 projects.**
+  FL Studio 2026 writes event 172 with a 5-byte payload, while the .flp
+  format rule says events 128-191 carry 4 bytes. Reading it as 4 bytes
+  shifted every following event by one byte: on small projects the reader
+  happened to realign, on larger ones the validator reported a corrupted
+  file even though the project opened fine in FL Studio. Event 172 is now
+  read as 5 bytes on FL 26+ files. FL 24/25 files are unaffected (they
+  never contain this event).
+
+### Notes
+- Verified on a real 1.2 MB FL Studio 26.1.1 project (470 clips, 53
+  channels, 25 patterns): all 4322 events parse cleanly, every clip is
+  found, and the organized output re-parses with no errors.
+
 ## [1.6.0] - 2026-10-17
 
 ### Added
