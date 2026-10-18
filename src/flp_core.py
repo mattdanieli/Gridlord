@@ -44,6 +44,13 @@ ID_TRACK_NAME       = TEXT_BASE + 47         # 239
 ID_ARRANGEMENT_NAME = TEXT_BASE + 49         # 241
 ID_PLAYLIST         = DATA_BASE + 25         # 233
 ID_TRACK_DATA       = DATA_BASE + 30         # 238
+# FL Studio 2026 (26.x) writes event 172 with a 5-byte payload, breaking the
+# usual "IDs 128-191 carry 4 bytes" rule. Reading it as 4 bytes shifts every
+# following event by one byte. Only applied to FL 26+ files; FL 24/25
+# projects never contain this event.
+ID_FL26_FIVE_BYTE = 172
+FL26_FIVE_BYTE_SIZE = 5
+
 ID_CHANNEL_COLOR    = DWORD_BASE + 0         # 128 - channel colour, 4 bytes 0x00RRGGBB
 ID_PATTERN_COLOR    = DWORD_BASE + 22        # 150 - pattern colour (verified on FL 25.1.6)
 
@@ -309,6 +316,7 @@ def validate_compatibility(flp_path: Path | str) -> ValidationReport:
         patterns_with_color: set[int] = set()
         tracks_with_name: set[int] = set()
         fl_version = ""
+        fl_major = 0
 
         while pos < end:
             evt_start = pos
@@ -317,6 +325,8 @@ def validate_compatibility(flp_path: Path | str) -> ValidationReport:
                 payload_start = pos; pos += 1
             elif evt_id < 128:
                 payload_start = pos; pos += 2
+            elif evt_id == ID_FL26_FIVE_BYTE and fl_major >= 26:
+                payload_start = pos; pos += FL26_FIVE_BYTE_SIZE
             elif evt_id < 192:
                 payload_start = pos; pos += 4
             else:
@@ -363,6 +373,7 @@ def validate_compatibility(flp_path: Path | str) -> ValidationReport:
                 # FL version string, e.g. "25.1.6.4997"
                 try:
                     fl_version = data[payload_start:payload_start+payload_size].rstrip(b"\x00").decode("ascii", errors="replace")
+                    fl_major = int(fl_version.split(".")[0])
                 except Exception:
                     pass
             elif evt_id == ID_CHANNEL_NEW:
@@ -730,6 +741,7 @@ def analyze(flp_path: Path | str,
     track_info_state: dict[int, dict] = {}
     # Last seen ID 43 event (track colour override flag) before a TRACK_DATA
     last_43_offset: Optional[int] = None
+    fl_major = 0   # FL Studio major version, read from the version event
 
     while pos < end:
         evt_id = data[pos]
@@ -739,6 +751,8 @@ def analyze(flp_path: Path | str,
             payload_size = 1; pos += 1
         elif evt_id < DWORD_BASE:
             payload_size = 2; pos += 2
+        elif evt_id == ID_FL26_FIVE_BYTE and fl_major >= 26:
+            payload_size = FL26_FIVE_BYTE_SIZE; pos += FL26_FIVE_BYTE_SIZE
         elif evt_id < TEXT_BASE:
             payload_size = 4; pos += 4
         else:
@@ -754,6 +768,7 @@ def analyze(flp_path: Path | str,
                 result.fl_version = ver
                 parts = ver.split(".")
                 major = int(parts[0])
+                fl_major = major
                 minor = int(parts[1]) if len(parts) > 1 else 0
                 is_unicode = (major >= 12) or (major == 11 and minor >= 5)
             except Exception:
