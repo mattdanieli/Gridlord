@@ -21,6 +21,8 @@ use crate::engine::system;
 use crate::engine::write::{self, SaveError, Saved, Target};
 use crate::i18n;
 
+mod welcome;
+
 pub const APP_NAME: &str = "Gridlord";
 pub const APP_SUBTITLE: &str = "Playlist Organizer for FL Studio";
 pub const APP_VERSION: &str = env!("CARGO_PKG_VERSION");
@@ -296,6 +298,8 @@ struct Settings {
     language: Lang,
     show_after: bool,
     last_dir: Option<PathBuf>,
+    /// La guida di benvenuto e gia stata vista (si apre da sola solo la prima volta).
+    welcome_seen: bool,
 }
 
 impl Default for Settings {
@@ -308,6 +312,7 @@ impl Default for Settings {
             language: Lang::En,
             show_after: true,
             last_dir: None,
+            welcome_seen: false,
         }
     }
 }
@@ -381,6 +386,7 @@ pub struct App {
     dialog: Dialog,
     fl_running: Arc<AtomicBool>,
     logo: egui::TextureHandle,
+    welcome: Option<welcome::Welcome>,
 }
 
 impl App {
@@ -407,6 +413,8 @@ impl App {
         }
 
         let (tx, rx) = channel();
+        let welcome = (!settings.welcome_seen && std::env::var_os("GRIDLORD_NO_WELCOME").is_none())
+            .then(welcome::Welcome::new);
         let mut app = App {
             lang: settings.language,
             pal: if settings.dark { DARK } else { LIGHT },
@@ -421,6 +429,7 @@ impl App {
             dialog: Dialog::None,
             fl_running,
             logo: logo_texture(&cc.egui_ctx),
+            welcome,
         };
         apply_style(&cc.egui_ctx, &app.pal, app.settings.dark);
 
@@ -1083,6 +1092,7 @@ impl eframe::App for App {
             .show(ui, |ui| self.central(ui, &ctx));
 
         self.dialogs(&ctx);
+        self.welcome_ui(&ctx);
         self.drop_overlay(&ctx);
     }
 }
@@ -1119,6 +1129,13 @@ impl App {
                     self.settings.dark = !self.settings.dark;
                     self.pal = if self.settings.dark { DARK } else { LIGHT };
                     apply_style(ui.ctx(), &self.pal, self.settings.dark);
+                }
+                if ui
+                    .add(egui::Button::new(RichText::new("?").font(bold(16.0))).min_size(Vec2::splat(34.0)))
+                    .on_hover_text(self.l("Welcome guide", "Guida di benvenuto"))
+                    .clicked()
+                {
+                    self.welcome = Some(welcome::Welcome::new());
                 }
                 let label = RichText::new(format!("🌐  {}  ⏷", self.lang.code())).font(bold(12.5));
                 ui.menu_button(label, |ui| {

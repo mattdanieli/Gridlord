@@ -142,6 +142,26 @@ const ZH: &[(&str, &str)] = &[
     ("Backup: {0}", "备份：{0}"),
     ("Replace {0} projects?", "替换 {0} 个项目？"),
     ("{0} · {1} clips · tracks {2}", "{0} · {1} 个片段 · 轨道 {2}"),
+    // Guida di benvenuto
+    ("Skip", "跳过"),
+    ("Next", "下一步"),
+    ("Back", "上一步"),
+    ("Get started", "开始使用"),
+    ("Welcome guide", "欢迎指南"),
+    ("Welcome to Gridlord", "欢迎使用 Gridlord"),
+    ("Gridlord tidies up the playlist of your FL Studio projects in one click. Here is a quick tour: it takes 30 seconds.", "Gridlord 一键整理你的 FL Studio 项目播放列表。下面是快速导览，只需 30 秒。"),
+    ("Every clip, grouped by name", "每个片段，按名称分组"),
+    ("After a long session the same sample ends up scattered over dozens of tracks. Gridlord moves every clip with the same name onto neighbouring tracks. Nothing moves in time, so your song sounds exactly the same.", "长时间创作后，同一个采样会散落在几十条轨道上。Gridlord 会把同名的片段移到相邻的轨道上。时间位置不会改变，所以歌曲听起来完全一样。"),
+    ("Three steps", "三个步骤"),
+    ("Drop one or more .flp files (or a whole folder) on the window, choose the track order, then press \"Organize and save\". The preview shows the result before anything is saved.", "把一个或多个 .flp 文件（或整个文件夹）拖到窗口上，选择轨道顺序，然后点击“整理并保存”。保存之前，预览会显示结果。"),
+    ("Finishing touches", "收尾工作"),
+    ("If you like, Gridlord names every track after its group and colors the groups like a rainbow (clips you colored yourself keep their color). Muted tracks move to the bottom, still muted.", "如果你愿意，Gridlord 会用分组名称命名每条轨道，并用彩虹色为各组上色（你自己上过色的片段保留原色）。静音轨道会移到底部，仍然保持静音。"),
+    ("Your original stays safe", "原文件始终安全"),
+    ("By default Gridlord saves a new file next to the original, ending in _organized.flp. Every file is read back and checked before it is kept. Ready? Drop your first project.", "默认情况下，Gridlord 会在原文件旁边保存一个以 _organized.flp 结尾的新文件。每个文件在保留之前都会被重新读取并检查。准备好了吗？拖入你的第一个项目吧。"),
+    ("Drop your projects", "拖入项目"),
+    ("Pick an order", "选择顺序"),
+    ("Original, untouched", "原文件，未改动"),
+    ("New file, checked", "新文件，已检查"),
 ];
 
 // German
@@ -263,6 +283,26 @@ const DE: &[(&str, &str)] = &[
     ("Backup: {0}", "Sicherung: {0}"),
     ("Replace {0} projects?", "{0} Projekte ersetzen?"),
     ("{0} · {1} clips · tracks {2}", "{0} · {1} Clips · Spuren {2}"),
+    // Guida di benvenuto
+    ("Skip", "Überspringen"),
+    ("Next", "Weiter"),
+    ("Back", "Zurück"),
+    ("Get started", "Los geht's"),
+    ("Welcome guide", "Willkommensguide"),
+    ("Welcome to Gridlord", "Willkommen bei Gridlord"),
+    ("Gridlord tidies up the playlist of your FL Studio projects in one click. Here is a quick tour: it takes 30 seconds.", "Gridlord räumt die Playlist deiner FL-Studio-Projekte mit einem Klick auf. Hier ist eine kurze Tour: Sie dauert 30 Sekunden."),
+    ("Every clip, grouped by name", "Jeder Clip, nach Namen gruppiert"),
+    ("After a long session the same sample ends up scattered over dozens of tracks. Gridlord moves every clip with the same name onto neighbouring tracks. Nothing moves in time, so your song sounds exactly the same.", "Nach einer langen Session ist dasselbe Sample über Dutzende Spuren verstreut. Gridlord verschiebt alle Clips mit demselben Namen auf benachbarte Spuren. Zeitlich bewegt sich nichts, dein Song klingt also genau gleich."),
+    ("Three steps", "Drei Schritte"),
+    ("Drop one or more .flp files (or a whole folder) on the window, choose the track order, then press \"Organize and save\". The preview shows the result before anything is saved.", "Zieh eine oder mehrere .flp-Dateien (oder einen ganzen Ordner) ins Fenster, wähle die Spurreihenfolge und klicke auf \"Ordnen und speichern\". Die Vorschau zeigt das Ergebnis, bevor etwas gespeichert wird."),
+    ("Finishing touches", "Der letzte Schliff"),
+    ("If you like, Gridlord names every track after its group and colors the groups like a rainbow (clips you colored yourself keep their color). Muted tracks move to the bottom, still muted.", "Wenn du möchtest, benennt Gridlord jede Spur nach ihrer Gruppe und färbt die Gruppen wie einen Regenbogen (Clips, die du selbst gefärbt hast, behalten ihre Farbe). Stummgeschaltete Spuren wandern nach unten und bleiben stumm."),
+    ("Your original stays safe", "Dein Original bleibt sicher"),
+    ("By default Gridlord saves a new file next to the original, ending in _organized.flp. Every file is read back and checked before it is kept. Ready? Drop your first project.", "Standardmäßig speichert Gridlord eine neue Datei neben dem Original, die auf _organized.flp endet. Jede Datei wird erneut gelesen und geprüft, bevor sie behalten wird. Bereit? Zieh dein erstes Projekt hinein."),
+    ("Drop your projects", "Projekte hineinziehen"),
+    ("Pick an order", "Reihenfolge wählen"),
+    ("Original, untouched", "Original, unverändert"),
+    ("New file, checked", "Neue Datei, geprüft"),
 ];
 
 // Spanish
@@ -384,6 +424,26 @@ const ES: &[(&str, &str)] = &[
     ("Backup: {0}", "Copia de seguridad: {0}"),
     ("Replace {0} projects?", "¿Reemplazar {0} proyectos?"),
     ("{0} · {1} clips · tracks {2}", "{0} · {1} clips · pistas {2}"),
+    // Guida di benvenuto
+    ("Skip", "Saltar"),
+    ("Next", "Siguiente"),
+    ("Back", "Atrás"),
+    ("Get started", "Empezar"),
+    ("Welcome guide", "Guía de bienvenida"),
+    ("Welcome to Gridlord", "Bienvenido a Gridlord"),
+    ("Gridlord tidies up the playlist of your FL Studio projects in one click. Here is a quick tour: it takes 30 seconds.", "Gridlord ordena la playlist de tus proyectos de FL Studio con un clic. Aquí tienes un recorrido rápido: solo 30 segundos."),
+    ("Every clip, grouped by name", "Cada clip, agrupado por nombre"),
+    ("After a long session the same sample ends up scattered over dozens of tracks. Gridlord moves every clip with the same name onto neighbouring tracks. Nothing moves in time, so your song sounds exactly the same.", "Tras una sesión larga, el mismo sample acaba repartido por decenas de pistas. Gridlord mueve todos los clips con el mismo nombre a pistas vecinas. Nada se mueve en el tiempo, así que tu canción suena exactamente igual."),
+    ("Three steps", "Tres pasos"),
+    ("Drop one or more .flp files (or a whole folder) on the window, choose the track order, then press \"Organize and save\". The preview shows the result before anything is saved.", "Arrastra uno o más archivos .flp (o una carpeta entera) a la ventana, elige el orden de las pistas y pulsa \"Organizar y guardar\". La vista previa muestra el resultado antes de guardar nada."),
+    ("Finishing touches", "Toques finales"),
+    ("If you like, Gridlord names every track after its group and colors the groups like a rainbow (clips you colored yourself keep their color). Muted tracks move to the bottom, still muted.", "Si quieres, Gridlord pone a cada pista el nombre de su grupo y colorea los grupos como un arcoíris (los clips que coloreaste tú conservan su color). Las pistas silenciadas van al final y siguen silenciadas."),
+    ("Your original stays safe", "Tu original está a salvo"),
+    ("By default Gridlord saves a new file next to the original, ending in _organized.flp. Every file is read back and checked before it is kept. Ready? Drop your first project.", "Por defecto, Gridlord guarda un archivo nuevo junto al original, terminado en _organized.flp. Cada archivo se vuelve a leer y se comprueba antes de conservarlo. ¿Listo? Arrastra tu primer proyecto."),
+    ("Drop your projects", "Arrastra tus proyectos"),
+    ("Pick an order", "Elige un orden"),
+    ("Original, untouched", "Original, intacto"),
+    ("New file, checked", "Archivo nuevo, comprobado"),
 ];
 
 // French
@@ -505,6 +565,26 @@ const FR: &[(&str, &str)] = &[
     ("Backup: {0}", "Sauvegarde : {0}"),
     ("Replace {0} projects?", "Remplacer {0} projets ?"),
     ("{0} · {1} clips · tracks {2}", "{0} · {1} clips · pistes {2}"),
+    // Guida di benvenuto
+    ("Skip", "Passer"),
+    ("Next", "Suivant"),
+    ("Back", "Retour"),
+    ("Get started", "Commencer"),
+    ("Welcome guide", "Guide de bienvenue"),
+    ("Welcome to Gridlord", "Bienvenue dans Gridlord"),
+    ("Gridlord tidies up the playlist of your FL Studio projects in one click. Here is a quick tour: it takes 30 seconds.", "Gridlord range la playlist de tes projets FL Studio en un clic. Voici une visite rapide : 30 secondes suffisent."),
+    ("Every clip, grouped by name", "Chaque clip, regroupé par nom"),
+    ("After a long session the same sample ends up scattered over dozens of tracks. Gridlord moves every clip with the same name onto neighbouring tracks. Nothing moves in time, so your song sounds exactly the same.", "Après une longue session, le même sample finit éparpillé sur des dizaines de pistes. Gridlord déplace tous les clips du même nom sur des pistes voisines. Rien ne bouge dans le temps : ton morceau sonne exactement pareil."),
+    ("Three steps", "Trois étapes"),
+    ("Drop one or more .flp files (or a whole folder) on the window, choose the track order, then press \"Organize and save\". The preview shows the result before anything is saved.", "Glisse un ou plusieurs fichiers .flp (ou un dossier entier) sur la fenêtre, choisis l'ordre des pistes, puis clique sur \"Organiser et enregistrer\". L'aperçu montre le résultat avant tout enregistrement."),
+    ("Finishing touches", "Touches finales"),
+    ("If you like, Gridlord names every track after its group and colors the groups like a rainbow (clips you colored yourself keep their color). Muted tracks move to the bottom, still muted.", "Si tu veux, Gridlord nomme chaque piste d'après son groupe et colore les groupes comme un arc-en-ciel (les clips que tu as colorés toi-même gardent leur couleur). Les pistes muettes passent en bas et restent muettes."),
+    ("Your original stays safe", "Ton original reste en sécurité"),
+    ("By default Gridlord saves a new file next to the original, ending in _organized.flp. Every file is read back and checked before it is kept. Ready? Drop your first project.", "Par défaut, Gridlord enregistre un nouveau fichier à côté de l'original, se terminant par _organized.flp. Chaque fichier est relu et vérifié avant d'être conservé. Prêt ? Glisse ton premier projet."),
+    ("Drop your projects", "Glisse tes projets"),
+    ("Pick an order", "Choisis un ordre"),
+    ("Original, untouched", "Original, intact"),
+    ("New file, checked", "Nouveau fichier, vérifié"),
 ];
 
 // Russian
@@ -626,15 +706,35 @@ const RU: &[(&str, &str)] = &[
     ("Backup: {0}", "Резервная копия: {0}"),
     ("Replace {0} projects?", "Заменить проекты ({0})?"),
     ("{0} · {1} clips · tracks {2}", "{0} · клипов: {1} · дорожки {2}"),
+    // Guida di benvenuto
+    ("Skip", "Пропустить"),
+    ("Next", "Далее"),
+    ("Back", "Назад"),
+    ("Get started", "Начать"),
+    ("Welcome guide", "Приветственный гид"),
+    ("Welcome to Gridlord", "Добро пожаловать в Gridlord"),
+    ("Gridlord tidies up the playlist of your FL Studio projects in one click. Here is a quick tour: it takes 30 seconds.", "Gridlord наводит порядок в плейлисте ваших проектов FL Studio одним щелчком. Вот короткий обзор: всего 30 секунд."),
+    ("Every clip, grouped by name", "Каждый клип сгруппирован по имени"),
+    ("After a long session the same sample ends up scattered over dozens of tracks. Gridlord moves every clip with the same name onto neighbouring tracks. Nothing moves in time, so your song sounds exactly the same.", "После долгой сессии один и тот же сэмпл оказывается разбросан по десяткам дорожек. Gridlord переносит все клипы с одинаковым именем на соседние дорожки. Во времени ничего не сдвигается, поэтому трек звучит точно так же."),
+    ("Three steps", "Три шага"),
+    ("Drop one or more .flp files (or a whole folder) on the window, choose the track order, then press \"Organize and save\". The preview shows the result before anything is saved.", "Перетащите в окно один или несколько файлов .flp (или целую папку), выберите порядок дорожек и нажмите «Упорядочить и сохранить». Предпросмотр покажет результат до сохранения."),
+    ("Finishing touches", "Финальные штрихи"),
+    ("If you like, Gridlord names every track after its group and colors the groups like a rainbow (clips you colored yourself keep their color). Muted tracks move to the bottom, still muted.", "При желании Gridlord называет каждую дорожку по её группе и раскрашивает группы цветами радуги (клипы, которые вы раскрасили сами, сохраняют свой цвет). Заглушённые дорожки уходят вниз и остаются заглушёнными."),
+    ("Your original stays safe", "Оригинал в безопасности"),
+    ("By default Gridlord saves a new file next to the original, ending in _organized.flp. Every file is read back and checked before it is kept. Ready? Drop your first project.", "По умолчанию Gridlord сохраняет новый файл рядом с оригиналом, с окончанием _organized.flp. Каждый файл перечитывается и проверяется, прежде чем остаться. Готовы? Перетащите свой первый проект."),
+    ("Drop your projects", "Перетащите проекты"),
+    ("Pick an order", "Выберите порядок"),
+    ("Original, untouched", "Оригинал не тронут"),
+    ("New file, checked", "Новый файл проверен"),
 ];
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
-    /// Primo testo (quello inglese) di ogni chiamata t("..", ..), l("..", ..), f("..", ..) in gui.rs.
+    /// Primo testo (quello inglese) di ogni chiamata t("..", ..), l("..", ..), f("..", ..) in gui.rs e gui/welcome.rs.
     fn keys_in_gui() -> Vec<String> {
-        let src = include_str!("gui.rs");
+        let src = concat!(include_str!("gui.rs"), include_str!("gui/welcome.rs"));
         let b = src.as_bytes();
         let mut keys = Vec::new();
         for pat in ["t(", "l(", "f("] {
