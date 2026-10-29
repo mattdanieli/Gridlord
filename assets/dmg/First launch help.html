@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gridlord · First launch</title>
+<style>
+:root{--bg:#f4f5f8;--card:#fff;--ink:#1c1f26;--muted:#6b7280;--line:#e1e4ea;--accent:#e86e12;--blue:#0a84ff;--code:#1c1f26}
+@media (prefers-color-scheme:dark){:root{--bg:#16181d;--card:#20232a;--ink:#eef0f4;--muted:#9aa1ad;--line:#30343d;--code:#0e1013}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:40px 20px 60px}
+header{display:flex;gap:20px;align-items:center;margin-bottom:28px}
+header img{width:84px;height:84px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.18))}
+h1{font-size:30px;line-height:1.2;margin:0 0 6px}
+.lead{color:var(--muted);margin:0}
+.lang{flex-shrink:0;margin-left:auto;align-self:flex-start;display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:none;color:var(--muted);font:inherit;font-size:13px;padding:5px 12px;cursor:pointer}
+.lang button.on{background:var(--accent);color:#fff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;margin:18px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.card h2{font-size:19px;margin:0 0 4px;display:flex;gap:10px;align-items:center}
+.tag{font-size:12px;font-weight:600;color:#fff;background:var(--accent);border-radius:999px;padding:2px 10px}
+.tag.grey{background:#8e8e93}
+.sub{color:var(--muted);margin:0 0 18px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:700px){.steps{grid-template-columns:1fr}header{flex-wrap:wrap}}
+.step{border:1px solid var(--line);border-radius:12px;padding:14px}
+.num{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:14px;display:grid;place-items:center;margin-bottom:10px}
+.step b{display:block;margin-bottom:4px}
+.step span{color:var(--muted);font-size:14px}
+.mock{height:112px;white-space:nowrap;border-radius:10px;background:var(--bg);border:1px solid var(--line);margin-bottom:12px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:10px;font-size:12px}
+.mock .btn{background:var(--blue);color:#fff;border-radius:7px;padding:3px 26px;font-weight:600}
+.mock .row{width:92%;border-radius:6px;padding:3px 8px;font-size:11.5px;display:flex;gap:6px;align-items:center;color:var(--muted)}
+.mock .row i{width:12px;height:12px;border-radius:3px;background:#8e8e93;display:inline-block}
+.mock .row.sel{background:var(--blue);color:#fff;font-weight:600}
+.mock .row.sel i{background:#fff}
+.mock .any{border:1px solid var(--line);background:var(--card);border-radius:7px;padding:3px 16px;font-weight:600;outline:2px solid var(--accent);outline-offset:2px}
+.mock .bar{width:70%;height:6px;border-radius:3px;background:var(--line)}
+pre{position:relative;background:var(--code);color:#e8eaf0;border-radius:10px;padding:16px 96px 16px 18px;margin:12px 0 6px;font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;word-break:break-all}
+.copy{position:absolute;top:10px;right:10px;border:0;border-radius:7px;background:var(--accent);color:#fff;font:600 13px -apple-system,sans-serif;padding:5px 12px;cursor:pointer}
+ol{margin:6px 0 0;padding-left:22px}
+li{margin:4px 0}
+kbd{font:13px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;background:var(--card)}
+.note{color:var(--muted);font-size:14px}
+footer{color:var(--muted);font-size:14px;text-align:center;margin-top:30px}
+a{color:var(--accent)}
+html[lang=en] [data-l=it],html[lang=it] [data-l=en]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAACoCAYAAAB0S6W0AAAXBUlEQVR42u1de4xdR3n/fTNzzn3t7t299tpeZ+PNw44T0ySE8BAhJEBE2wCiFJQSqaItVdWiQqUKhNS0tKU0VduI8mxViOgLSJWKtAQqgiDQgkgICQlJk+A87Dgx8Wu99r27e9/nzszXP8659vXGScieubtn1/OLju/G67177szv/L7HfN8M4OHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eGxlkH+ns84sJ9s9/c38Hq52LWrTVEUUa/X82T9ORAEAYdhyLt3Fxh4gAHYJWRlP0ovjZQEQABQ27dvz01PTxcA5AEoPzypoQDkp6enC9u3b88l/y8Gxt0r6IsQk4DtamqqKQ8fPqwBRMn3w8r09GS5uHFrqNQUk9okiMeISJ3QA4/n2nNibSzqxDwX6c7hqNk8dOjQU0cBdPsCOz09rQ4cyFtgr07UNDPKShkipsDMjML+/QSgDQAbt22bqpS2vFoG8mpB9CqG2EHApBBCEGXygc+s28nMsNYygDlm3svMP7HWfK+5UP3RgQN7Dib/sDAzM8P79+/XiRuw6kSlDBCTgJkA2C8AtADkLrjoVVeqILxeEH6JhDybiMDMYLZgZoDZ8qlPuseLjDUBBCJBRCAS6I+pteYwg+/UUXTrk4/d//1kDorAjAX29wYUlc8kgvZ9TLF58+Zwdna2DSDc/rLXvDWU6g8E0dUkJKw1YLYWDItkgH0k7yCCZ+6royAhhBASzBbW2nuMNn//xO4f3Q6gvXnz5uLs7GwPgDlNYLUuCTqgmgiT19aOiy67KgiKfyaEvAYArDXMzJZiQnoyDpm0/bEWQlLC37u63fZf7n38gW8DKADTAA70Bsz+ipFUroavOTk5WWi1Wr1yuVw8d8crPqaC3D8KIbdbqy1baxNT5Mm5UuY/GWu21lq2Vgh5jpTBezZObp1UQt/TaBxqTk5O5lutllmvJv6ESd+wYUP++PHjzZmZXZcUy+OfV1K92hgNZjZEJD1fMiGphoiEVAEZ3Xuk2ar/7v69j9xbqVRGq9VqO1FSuxJKKleQnLJSqRSq1Wrj/Asu/5Xi6OhtQsgdxmhNJxXTIxuSKgCQNUZLqabCILy+PD65/+CBfQ9UKpVSu91escSeXClyTkxMFGq1Wn37zst+K58vfAnAiDXGEJFPvmeVqCBh2RoC5YMgfGd5fPL4wQP77pqYmBjpdDpmrRN0KTkb5+287DdzudIXwCyYmeFN+lqgqWCwZQarIPeW8vjG2qEDT981MTFRWgmSyiGSk/pmvVartWd2XPL2Yr70RWYWADMI3qSvJTGNo3sOgvDa0bEN+w4ffOaBiYmJYqfT0cP0RYcVJInkygMwU9su3DU+XrmTgAlrrfX+5poNnywgAEKnvli79sAzj90HTCpgrotTc6WZVlBK3jeYmJgIpJTFTVu2fUVKdW7ic3qzvobDJ2a2UohcEIRXWs1fabejKFmZHsqyqBgCOQUAUS6Xc7VarT119s6PKJV7udFae3KuiwhfGmO0UsGOjZunbgSqUblcziei5LxAwjVhRPyek7lut6rPPvvCq4qlkU9aa5hOfgCPte+QCjbWKBVcViyVHpw9cvDxSqUSttttA8crTdLtfcc1nOVykOt2u2rLWefeLJSaYWsZ3u9cb/4oSAiSIrio05r/j8XFRU78UKcEFa4JWqlUwoWFhc62cy56mwrCK4zW1qeT1qWtF8Zoo4Lwkg1bzrsOQHtiYiKHk8XPmSLoibRStVpVAEr54sj748/hS+LWL0dBzJbz+eLvo1Co1Gq1xMVzR1KXBBVAJQQQTU1fcKWU6jXWaga8eq5jigpjDCspd23bfM41AKKJiYnQZbCkHJGTAMjR0V5QryMaGRm9TpCANsYSwRN0XbuizARwWCi9G8B/a61loqI24UUqC+pSQWW9XueRkZFpIeQ11hr4hPyZYOZJGGtJCvn68saN59XrdYuTjXiZMPGxeS+XAwC9iY3TrxZSbbZsLQM02C/gr3V5kbXWCiHHyuUtVwDQ5ZgLTsy8ckBOAkCj1so6YIOgcGXc7wImB16IoLihBuwbkBwHOGAGrJtBZSJCqILXA7jFGDMYKKUy8658UFmv1wWAEanEpcwWRJyanpKAtgbamiBFTFZmn+1fNosGiKktkFeMogIMpyY7MRsIIS8GUG40Gs3ED9VZCZIkAC4Wy5uJ6Dy2NnWCSQhgvkvYWbF4x44IuyoWofdonUBb4Il5ga/tUXjkmEQ5jLsSlz1fBIo7mmlmdGJya70290RWFHRwFxAujo1PEcQEMyON/yEJmO8Qrr+wh4+9votSnuE3Z3CLNwngty/u4a9+mMM/PxpgrE/S5UkzAcxCiOJYsXxWvTb3OFBWwEJWfNAxCSxyPhdsISEEJ4/Tcn3OxYjw5nM0/u6aDqAJuk0gb9cdZ4eAnAA+9oYOqh3g9j0ByjletrlnZhZCklDqLAAYHbWiXj+li5dXmqAnNvQaGbGi0YAFBRtBgGVrl1u5ZBkIJOPDr4wAJhgDKG/ahxAlxb6n0IQPvzLCd34m0Uvh33NchA6hxIaEsMJFlshJmim5GZJEo5QihBEEdDSwfdziwooFa0B6cg4NkuIwZqbMuGiDRUfHc5CSDmMARMKJVK6eC4LSqX4oBWk/nmGgnAOkhM8rrVBkDwlsyDEMU+oMCcUbcoh4gWn186B9/4OQJOVTF1v5fOeq+aSpdmE69edoybXqaabY1IPJTTmgp+jqaGmauRvOjjiuetJ9jO3RpykNmPjMENTJc7Sq+/x5Yjmx8K7nzsfIHpmGWwW1Nva2mVM9yr4If+XVk/qREi8zSu3/rHW75Jc5BRUENLsEa+FXj1YABIAssBABApw5acgUQS0DeQXsnSc8PU9gB5U2Hi883qyAI3XCY8cFCiqd8cu+iXekoAtdwqd+ovDZayNQj6CtixUOj6UWGQTIkPGZBwMcbxMmUqzFrxmCckozYRgYyzFue1Ji60iAG16rISTijmsPd0i6hj5zT4B/fVSinGPodKHDUNyDISho+lu1DIwFwKcfkPjxYYFf22Wwc9zXg7qCZmDvvMBtjwt871mB0ZAdVNZnO1Hv/D4tgPEQuPcw4e4DCoXAm3mXvmdHx8Ui5dCRn9+fd5t1gjqEYWAkiEtQrF+jdzfpBORz8XhmPQhVa+Fp7wdPXkAdR/Br4WFy+qGTECltNq1ffk2I60G1BTo9r58uESiCEoCxJ8c6XRFa/J91TPuhrMW7eI9+92G1YTFaENi6UUHJ7OXp1hwoXuyZmzeo1i3GSuLEWK9/E+/oHDIiwBhAG8bvva2M694wgqmKhBQDy3Iey3vwE/M+WzO4/a4m/umORTAzlKR0JB1SnimTPmh/SfeT79+Id10ziqhl0dNeOl1i+9YAf/LeCi6/IIcPfHoO1sat3mfASlK6R0kKoNaw+OB143jXNaOoHjeQAvC7PLmF7jEaxw1++XUlfPBQhI/+WxUTIyJFVD+EHBMythZPAHoa2DQucf2bRtFuWEgZP9lLewj8le4SBAQSaC4avOvqEWzbpNDtceYKdMSw9HM5FwTQ0YyZLQE2jSv0NPvk/DAFgQBtgMqoxPlbA3QSgi53/uxaIGhqglsgVOTbjVdSpQSQCwicwd1bhrDUmaJgOWkLZZ9LWpXANG6pTVmwzOu8YNnDwxPUwxPUwyNzPmg2W/89XurcpWk7tlkmKGDTB0nJz3uirmSARAMBUsogaT2beGZASWB2XqPVsT4HugIgAjqRxZHjOv16/Hr3QZmBfEh4+pDGvY91MFISfg1+iOhpYLQk8ODeLh77WYRCjlwdqpBVE+/GGZIS+OtbjuPynXlMliXmG9Zv5uB8mAnlEYHFpsWNXzx24nCKrI2yex80ZahjGSjkgCefjfDrNx7CTe+bxKXn5yGcbIfq0Z8atsDu/V3ccPMcHtrbwVhRwFgX9XY2wwS1bnxlY4CRAuHRfV386kcO4sqLC7hgWw6h9PWgTky7AZ46GOEHD7fQbDNGCwI6ZVv3iXnPfNOcIxthLFDMx1vgfOu+Ju64p+mZ5RBSAqW8QKlAMBk+QSXTTXP9fajKJeFlcwhCYq3zvb7WAkHdp9uNu9OdPYY2T2tl4waXSM4+5FYE1v4kL5cgKUD93TBsdjMkKrMPtyRwRwME5C89C8FMBeSLRN0Mr7XoPTuPziOHgK6NiWocHIKa1aa51skg/sRpEelOsSdwq4fg7Als/MOrkb9kKyiQnlkuSdoz6D4+i2Of+j66e+YgSmEqJU2zSrq2fFAicKShpkYxddPboabGYBc74FbkWeXUxhPyL5vC1E1vx+EP3Y5ofxWUVylIOpxd6rNn4gngSKPyO1dAbS3DVJuJevogyTXMQhtyQxGV970OR/7o65ksJRNZe6o5Mgimx1F4xTRso+NN+zCHO5CwjQj5X5hCcO4GcFdnbt/1jBEUgDZQG0YgCmGmo8t1A8ugfIBgchSsTeYMlVsT77Ji2Vv0lReHDFYsOy8WSbu7nYvd8TyWw83BnQl52TPXR3tdmngPD09QD09QD49s+qBw0zRH3gddeQw2zfHKzvtaUlAGwD3rU0wrOugcj3kGMyeZ2t2OmUGhQu/QAvR8C+T3/B4+pICpdxA9WwMCdWI9PSs73GVLQRlAIKDnGqh/+3GIsXxcZudJOiTVNJDjBdT/dw96BxcgwuwJgmOC2rQaClgLUQpR+9J9aPzPE1CbRv1y5xBASkJtGkXznqdR/cLdEAUFZgfzl+mmOVcqKuKdVY/8xR0Yf+IoRt98IVSl5HMODsdYH2ugcduDqH75PnBkYhHIoKVyQ9DWEgEFUh66kzTHW0b1Cz/Ewn8+FCupJN/WmfbhJ4AtQx9twFSbEKUw9vXTBqXDqbbLbssHc7wdtSgXYCON7tPH/M5izux7bOJFuQBYG491Rm/V8UlzbtfSGYib5AWBcsorp2M1ZWNOHeuUb8hnhA+69GEnceLYOR/MOxPQpO6Tk8Aou8g0QUlImG4LttcBqRBEXkId+U+wOoJQOch8CWzNGURQR44yCYFecx5jM5di6rXvRGnqIpAIPLlc6KfVaM4+gSP3fhXzT90PVSi7OfxgcN7bmSSom8M6SUjo1gLOvvq9uODdfwqVzyHDD/maxIaLX4vpq96DvV+9Cfu/9Q9QhTEwm5TsXAMbN6S9TRISvdYCNl32Flz0GzdCd4Corv1ZiM4nyoKkxM7rb0BUn8OhH94KVRxPZe7XwBbgLsbNQIR5nPvWD4ENg40FSeUJ5RwCbA1MV+Ccaz+Iow99E2x809yLRuy210Fpyw6UtlwAE8WK6jG8INT2gOLkNEamd8FE7Thr4gn6wgqqCiMQSvjE/EqMNxgkAVUYj33QjClotgqW+3vm+ITnKjCVTzllZXlzx87reH3k4ZFpDGGpM2WdCLxlXz1zn35bg3Xvg3p4DNcH9YchrgP95MzMnfNTPpzYeF+2tAogVzbe6eQ5NvGcekGShIBu12G1zVzKY70Skw2gW/NxDjRlBoWIelkkaPyprG2mKXlnthBBHs0je9A8shcy5ExX2qx5o24tZAC0jx1E/eBuyLAATklQa7ke88HN5gbKDTlbDEBqtjXLDAYvW/pISJhWHfvu+Dhe8YGbQUIkS3Aim2f1rUFLHptxCxICMk/Yd8cnEDVqCEpp1+ItDPfm49/SygxB+woqtI6OMltOo8xsDVRxDEfu/xp++qXN2PnuP0dQVL6ayTVPpQBr4PFb/xYH774FQbGc1loJZoaO9Gwy/9pF5KQcEJMBGABCd1tHeWR8gUiMJ84MLY+kFkGhjP3fuRnz+x7AWVdch5GpC0EyxIlTTz2WN1tEYBuheWQPDv3ov1B78h6o4ljaynoGQNbajul1DwOQAJwcKuDIxMMCEJ1O5zhb+zMh5Tgzp+q/ZLYIiuNYfOZhzO/9MWSQS0ruvI1PP2MM0+tCqBBByhK7/jsSEbG1B1utxb6COikOVimJOaCiOQDdpjVmt1LqktjUp5M6thoqVwDypcz3zqw1yFwJYAu22gnliQiG9WMA6snfGRdq4srEW6CrAahId+8LwvB6VzkiZuumHcHjuePq7t0IAIzu/Tj2PfMMdKwLFXVIUGgA+cbCwkP5fKkmSEww2G+zcEZ4tkJoa1uNxcX7Y051Wjh1G4/lR14OfVANAMZ0D1mj7yFBgPsOAI/swZIgZqvvj6LWMwMR/Kr7oKcjaA8Auu3WHUqFbwGzL0ZZ/yAwU7fT/kYSueslBF1VBR008Sa5QbW4ePxeo/VuihvZvYquZ/UkImPMMwu12l2J4EUJF5woqEsTbxIF1QDqnW7zFu9+ngHySUS9butWQB8fECkDR+VNLtfi+wTtAAgW5499Vxv9UyIhvIquW/UU2uina9XqNwAEydzrAQVNDVctkzRwyUTqDQk6FuYK13J/CcNjPQXvFkSi2az/TdRtPpwQswmg69IHdd3T2yepAFDqdTvP5nKFLUoFuzjetsIHTeuDnEYIKXXUvXO+Ovv5ZM4XEW9408uigvbJ2Xcb+iTNR93Wo7nCyFVCiEpy015J17xpF9Jac6Q6f/QGNqaOeAvjQfV0soo0DAVdau4DZu7B2ieCXPEXiShYQmaPNSadyatp1hf+uNtp7u4HxYn/2U8zOSuYGIaJX/p1odeLZqVSc2GQeyP8ecZrmZxMJES7Xf94o179ZjKHC4mCRi59z2Eq6FIlZQClbqf1pAqCRhCEVwz0FXiSriVyCiE6ncbnFmrHvpy4cH1ydgZ8T6flZnKI5Bz8mgEUO+3WI0IFzSAIr2CAwLAgT9Ks+5wAiEiITqf1uYXq0X8ZIGczCYyWJuczT9ClPgsGlPQRIeSRQAWvIRJBsiGQj+4zGq0TCQmG6bQbn1iszf37ADkbA+TUGFKuW64AOXnJ01iIuu0nreGHgyB8mZSqkhQ3+8qnbKkmCyElWz7UbMx/tFGvfTuZn/kB5VwatfNaIuhzfBicXHHKad2d7XaaPwiC3KhUame8bn/iqDNP1FUOhIiIdC+6s7Zw9MZup/VY8v1B5ewu8TuH0uqwGgTtkzRg5l673bibQHuUUmdLKScHfFYfSK3w3BCREEKQsXpft9X41Hzt6BeTPGdvic/ZHabf+XzBzDB/h8DJJdAcgDyAAoCR5AKA8tjYxjfmCoV3CCF3xCeiWfDJASA6mRnwSEFIHiAUAYJEvBerMfrpXrf79YWFue8AqCZj3UiufrQe4dTVIh42ebCCJBUJScOEqIUBouaTDzw+Mjb+qjBXvEYK+XIScrQ/rMmmAkM6dG/d48QCChGdKI2wxjbZmoc73dZ3m/XafQPE7C4hZneAnHYlyLnS5nNwnV4hrn4ZJGoeQCn5OwYQBkH+rFyheEkQhC8XQp5PJKaEoEJ8lp+X0pcUrSZ/WGs7zHzEGvuU0dH/tdvNh3u9zrMJASkhYN+Ud06jmmYlBYJW6SkeNPl9sx8mJO0TNjfgjyoAo0GQ2xgEwSahwkkhqEwkSmAEXk1fcLw1wzat5UWro7ler3e01+vOIV6eHGzp7A6QsrtEMTUcFiFnmaCDv1OchqjhkiuXXEHyb/k070MZ+EyZFM0lXy8NOm1CvkEyDl56CTHtad57XRL0OT7RaYjadwGCga8HvydxsmrKE/T5yTnos/e7HvTA1Rt47S353lLFZKyimiFjRO2/ygFCDl6DJX2elC9OVh5QwT7x9IBP2SeuzQoxs6Y29Dxkfb6LllweL0xSXqKkz3ctJSVnhRhZc+xxGhLS8xDTE/TnV9EXuzJByrXkr9ELBETe93zpvujzBU6cdQKstdSJhzvienh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eJxB+H8UQmcz+PQUAAAAAABJRU5ErkJggg==" alt="">
+  <div>
+    <h1 data-l="en">Opening Gridlord for the first time</h1>
+    <h1 data-l="it">Aprire Gridlord la prima volta</h1>
+    <p class="lead" data-l="en">If your Mac says it can't open Gridlord, don't worry: nothing is broken. You only need to allow it once.</p>
+    <p class="lead" data-l="it">Se il Mac dice che non può aprire Gridlord, tranquillo: non è rotto niente. Basta dargli il permesso una volta sola.</p>
+  </div>
+  <div class="lang"><button id="b-en" onclick="setLang('en')">English</button><button id="b-it" onclick="setLang('it')">Italiano</button></div>
+</header>
+
+<div class="card">
+  <h2><span data-l="en">Why does this happen?</span><span data-l="it">Perché succede?</span></h2>
+  <p class="sub" style="margin:0" data-l="en">Gridlord is a free app made by an independent developer. macOS shows this warning for every app that isn't sold through Apple's paid developer program, the first time you open it. Once you allow it, Gridlord opens normally with a double-click, forever.</p>
+  <p class="sub" style="margin:0" data-l="it">Gridlord è un'app gratuita fatta da uno sviluppatore indipendente. macOS mostra questo avviso, la prima volta che la apri, per tutte le app che non passano dal programma a pagamento di Apple. Dopo averle dato il permesso, Gridlord si apre normalmente con un doppio clic, per sempre.</p>
+</div>
+
+<div class="card">
+  <h2><span class="tag" data-l="en">macOS 15 Sequoia or later</span><span class="tag" data-l="it">macOS 15 Sequoia o successivo</span>
+      <span data-l="en">Allow it in System Settings</span><span data-l="it">Dai il permesso dalle Impostazioni</span></h2>
+  <p class="sub" data-l="en">First make sure you dragged Gridlord into the Applications folder (don't open it from the disk image).</p>
+  <p class="sub" data-l="it">Prima controlla di aver trascinato Gridlord nella cartella Applicazioni (non aprirla direttamente dal disco .dmg).</p>
+  <div class="steps">
+    <div class="step">
+      <div class="mock"><div class="bar"></div><div class="bar" style="width:50%"></div><div class="btn">OK</div></div>
+      <div class="num">1</div>
+      <b data-l="en">Try to open Gridlord</b><b data-l="it">Prova ad aprire Gridlord</b>
+      <span data-l="en">Double-click it in Applications. macOS blocks it: close the message with OK or Done.</span>
+      <span data-l="it">Fai doppio clic su Gridlord in Applicazioni. macOS la blocca: chiudi il messaggio con OK o Fine.</span>
+    </div>
+    <div class="step">
+      <div class="mock"><div class="row"><i></i><span data-l="en">General</span><span data-l="it">Generali</span></div><div class="row sel"><i></i><span data-l="en">Privacy &amp; Security</span><span data-l="it">Privacy e sicurezza</span></div><div class="row"><i></i><span data-l="en">Desktop &amp; Dock</span><span data-l="it">Scrivania e Dock</span></div></div>
+      <div class="num">2</div>
+      <b data-l="en">Open System Settings</b><b data-l="it">Apri Impostazioni di Sistema</b>
+      <span data-l="en">Apple menu › System Settings › Privacy &amp; Security (in the sidebar).</span>
+      <span data-l="it">Menu Apple › Impostazioni di Sistema › Privacy e sicurezza (nella barra a sinistra).</span>
+    </div>
+    <div class="step">
+      <div class="mock"><span data-l="en">“Gridlord” was blocked</span><span data-l="it">“Gridlord” è stata bloccata</span><div class="any" data-l="en">Open Anyway</div><div class="any" data-l="it">Apri comunque</div></div>
+      <div class="num">3</div>
+      <b data-l="en">Click Open Anyway</b><b data-l="it">Clicca Apri comunque</b>
+      <span data-l="en">Scroll down to Security. Click Open Anyway, enter your Mac password, then Open.</span>
+      <span data-l="it">Scorri fino a Sicurezza. Clicca Apri comunque, scrivi la password del Mac, poi Apri.</span>
+    </div>
+  </div>
+  <p class="note" data-l="en">Don't see the button? It appears only for about an hour after step 1. Just repeat step 1 and look again.</p>
+  <p class="note" data-l="it">Non vedi il pulsante? Compare solo per circa un'ora dopo il passo 1. Ripeti il passo 1 e guarda di nuovo.</p>
+</div>
+
+<div class="card">
+  <h2><span class="tag grey" data-l="en">macOS 14 or older</span><span class="tag grey" data-l="it">macOS 14 o precedente</span>
+      <span data-l="en">Right-click › Open</span><span data-l="it">Clic destro › Apri</span></h2>
+  <ol>
+    <li data-l="en">Open the Applications folder and find Gridlord.</li><li data-l="it">Apri la cartella Applicazioni e trova Gridlord.</li>
+    <li data-l="en">Right-click it (or <kbd>control</kbd>-click) and choose <b>Open</b>.</li><li data-l="it">Fai clic destro (o <kbd>control</kbd>-clic) e scegli <b>Apri</b>.</li>
+    <li data-l="en">In the message that appears, click <b>Open</b> again.</li><li data-l="it">Nel messaggio che compare, clicca di nuovo <b>Apri</b>.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h2><span class="tag grey" data-l="en">Any macOS</span><span class="tag grey" data-l="it">Qualsiasi macOS</span>
+      <span data-l="en">The one-line fix with Terminal</span><span data-l="it">La soluzione in una riga col Terminale</span></h2>
+  <p class="sub" data-l="en">If nothing else works: open <b>Terminal</b> (press <kbd>⌘</kbd> <kbd>space</kbd>, type “Terminal”, press <kbd>return</kbd>), paste this line and press <kbd>return</kbd>. It removes the “downloaded from the internet” mark from Gridlord and opens it.</p>
+  <p class="sub" data-l="it">Se non funziona niente: apri il <b>Terminale</b> (premi <kbd>⌘</kbd> <kbd>spazio</kbd>, scrivi “Terminale”, premi <kbd>invio</kbd>), incolla questa riga e premi <kbd>invio</kbd>. Toglie a Gridlord il segno “scaricato da internet” e la apre.</p>
+  <pre id="cmd">xattr -dr com.apple.quarantine "/Applications/Gridlord.app" &amp;&amp; open "/Applications/Gridlord.app"<button class="copy" onclick="copyCmd(this)"><span data-l="en">Copy</span><span data-l="it">Copia</span></button></pre>
+  <p class="note" data-l="en">It only changes Gridlord, nothing else on your Mac.</p>
+  <p class="note" data-l="it">Modifica solo Gridlord, nient'altro sul Mac.</p>
+</div>
+
+<div class="card">
+  <h2><span data-l="en">After it opens</span><span data-l="it">Dopo che si è aperta</span></h2>
+  <p class="sub" style="margin:0" data-l="en">A short welcome guide shows you how Gridlord tidies up your FL Studio playlists. You can reopen it anytime with the ? button.</p>
+  <p class="sub" style="margin:0" data-l="it">Una breve guida di benvenuto ti mostra come Gridlord mette in ordine le playlist di FL Studio. Puoi riaprirla quando vuoi col pulsante ?.</p>
+</div>
+
+<footer>
+  <span data-l="en">Gridlord is free and open source:</span><span data-l="it">Gridlord è gratuita e open source:</span>
+  <a href="https://github.com/mattdanieli/Gridlord">github.com/mattdanieli/Gridlord</a>
+</footer>
+</div>
+<script>
+function setLang(l){document.documentElement.lang=l;for(const x of ['en','it'])document.getElementById('b-'+x).classList.toggle('on',x===l)}
+setLang((navigator.language||'en').toLowerCase().startsWith('it')?'it':'en');
+function copyCmd(b){const t=document.getElementById('cmd').firstChild.textContent.trim();
+  const done=()=>{const s=b.innerHTML;b.textContent='✓';setTimeout(()=>b.innerHTML=s,1500)};
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,()=>fallback(t,done))}else fallback(t,done)}
+function fallback(t,done){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}a.remove()}
+</script>
+</body>
+</html>
