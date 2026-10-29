@@ -122,21 +122,21 @@ jobs:
           "$RUNNER_TEMP/dmg/bin/pip" install --quiet dmgbuild
           tiffutil -cathidpicheck assets/dmg/background.png assets/dmg/background@2x.png -out dist/dmg-background.tiff
           cat > dist/dmg-settings.py <<'EOF'
-          files = ["dist/Gridlord.app"]
+          files = ["dist/Gridlord.app", "assets/dmg/First launch help.html"]
           symlinks = {"Applications": "/Applications"}
           icon = "dist/Gridlord.app/Contents/Resources/Gridlord.icns"
           background = "dist/dmg-background.tiff"
-          window_rect = ((200, 160), (640, 428))
+          window_rect = ((160, 100), (720, 618))
           default_view = "icon-view"
           show_status_bar = False
           show_tab_view = False
           show_toolbar = False
           show_pathbar = False
           show_sidebar = False
-          icon_size = 128
+          icon_size = 96
           text_size = 13
-          icon_locations = {"Gridlord.app": (160, 190), "Applications": (480, 190)}
-          hide_extension = ["Gridlord.app"]
+          icon_locations = {"Gridlord.app": (200, 130), "Applications": (520, 130), "First launch help.html": (96, 524)}
+          hide_extension = ["Gridlord.app", "First launch help.html"]
           format = "UDZO"
           EOF
           "$RUNNER_TEMP/dmg/bin/dmgbuild" -s dist/dmg-settings.py "Gridlord" dist/Gridlord-macos.dmg
@@ -191,9 +191,10 @@ jobs:
 
           ### First launch
           - **Windows:** if SmartScreen appears, click *More info* then *Run anyway*.
-          - **macOS:** open the .dmg and drag Gridlord onto the Applications folder. The first time,
-            right-click Gridlord in Applications and choose *Open*
-            (macOS 15+: System Settings, Privacy & Security, *Open Anyway*).
+          - **macOS:** open the .dmg and drag Gridlord onto the Applications folder. The first time, macOS may
+            say it can't open Gridlord: open *System Settings › Privacy & Security*, scroll down and click
+            *Open Anyway* (macOS 14 or older: right-click Gridlord in Applications and choose *Open*).
+            The installer window shows these steps, and *First launch help* inside it explains them with pictures.
 
           *Not affiliated with Image-Line.*
           EOF

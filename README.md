@@ -70,8 +70,11 @@ Older versions and release notes: **[Releases](../../releases)**.
 > Click **More info → Run anyway**. The app is not code-signed (signing certificates are expensive),
 > but the full source code is right here.
 >
-> **macOS:** open the `.dmg` and drag **Gridlord** onto the **Applications** folder, then **right-click → Open** it the first time.
-> On macOS 15+ you may need **System Settings → Privacy & Security → Open Anyway**.
+> **macOS:** open the `.dmg` and drag **Gridlord** onto the **Applications** folder.
+> The first time, macOS may say it can't open Gridlord. That's normal for free apps: open
+> **System Settings → Privacy & Security**, scroll down and click **Open Anyway**
+> (macOS 14 or older: **right-click → Open**). The installer window shows these steps too,
+> and **First launch help** inside it explains them with pictures.
 
 ## How to use it
 

@@ -10,7 +10,8 @@ All notable changes to this project will be documented in this file.
 - New name, new icon and a completely redesigned interface (dark and light themes, resizable panels)
 - **Welcome guide:** a short illustrated tour on first launch, explaining what Gridlord does and how
   to use it (reopen it anytime with the **?** button)
-- **macOS installer:** a `.dmg` with the classic window, just drag Gridlord onto Applications
+- **macOS installer:** a `.dmg` with the classic window, just drag Gridlord onto Applications,
+  with illustrated steps for the first launch and a **First launch help** guide (English and Italian)
 - **Playlist preview:** see your playlist before and after, hover a clip to see its group
 - **macOS version** (Apple Silicon and Intel), next to Windows
 - **Batch mode:** drop several projects or a whole folder and organize them all at once
