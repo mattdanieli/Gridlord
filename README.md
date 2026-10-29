@@ -9,7 +9,7 @@ Group every clip in your FL Studio playlist by name onto neighbouring tracks, in
 <p align="center">
   <a href="../../releases/latest/download/Gridlord-windows.exe"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"></a>
   &nbsp;
-  <a href="../../releases/latest/download/Gridlord-macos.zip"><img alt="Download for macOS" src="https://img.shields.io/badge/Download-macOS-111111?style=for-the-badge&logo=apple&logoColor=white"></a>
+  <a href="../../releases/latest/download/Gridlord-macos.dmg"><img alt="Download for macOS" src="https://img.shields.io/badge/Download-macOS-111111?style=for-the-badge&logo=apple&logoColor=white"></a>
 </p>
 <p align="center"><sub>Free · Open source · Windows 10/11 and macOS 11+ (Apple Silicon &amp; Intel) · FL Studio 2025 and newer · <a href="../../releases">All versions</a></sub></p>
 
@@ -54,6 +54,7 @@ as they were: only the track of each clip changes.
 - **Fast:** written in Rust, a 50 MB project is ready in a blink
 - **7 languages:** English, 中文 (Chinese), Deutsch, Español, Français, Italiano, Русский (switch from the 🌐 menu)
 - **Clean interface:** dark & light themes, drag & drop, resizable panels
+- **Welcome guide:** a short illustrated tour on first launch (reopen it anytime with the **?** button)
 - **Portable:** a single file, no installation, no internet connection, no account
 
 ## Download
@@ -61,7 +62,7 @@ as they were: only the track of each clip changes.
 | System | Download |
 |---|---|
 | Windows 10 / 11 | **[Gridlord-windows.exe](../../releases/latest/download/Gridlord-windows.exe)** (or **[.zip](../../releases/latest/download/Gridlord-windows.zip)** if your browser blocks the .exe) |
-| macOS 11+ (Apple Silicon & Intel) | **[Gridlord-macos.zip](../../releases/latest/download/Gridlord-macos.zip)** |
+| macOS 11+ (Apple Silicon & Intel) | **[Gridlord-macos.dmg](../../releases/latest/download/Gridlord-macos.dmg)** (or **[.zip](../../releases/latest/download/Gridlord-macos.zip)**) |
 
 Older versions and release notes: **[Releases](../../releases)**.
 
@@ -69,7 +70,7 @@ Older versions and release notes: **[Releases](../../releases)**.
 > Click **More info → Run anyway**. The app is not code-signed (signing certificates are expensive),
 > but the full source code is right here.
 >
-> **macOS:** unzip, move **Gridlord.app** to Applications, then **right-click → Open** the first time.
+> **macOS:** open the `.dmg` and drag **Gridlord** onto the **Applications** folder, then **right-click → Open** it the first time.
 > On macOS 15+ you may need **System Settings → Privacy & Security → Open Anyway**.
 
 ## How to use it
