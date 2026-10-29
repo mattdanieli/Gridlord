@@ -126,7 +126,7 @@ jobs:
           symlinks = {"Applications": "/Applications"}
           icon = "dist/Gridlord.app/Contents/Resources/Gridlord.icns"
           background = "dist/dmg-background.tiff"
-          window_rect = ((200, 160), (640, 400))
+          window_rect = ((200, 160), (640, 428))
           default_view = "icon-view"
           show_status_bar = False
           show_tab_view = False
