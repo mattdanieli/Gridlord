@@ -6,3 +6,4 @@ Thumbs.db
 # real projects used for local tests (never commit them)
 /fixtures/
 *.flp
+__pycache__/
