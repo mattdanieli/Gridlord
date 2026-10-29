@@ -1,18 +1,8 @@
-# Python
-__pycache__/
-*.pyc
-*.pyo
-.venv/
-venv/
-
-# PyInstaller
-build/
-dist/
-
-# IDE
+/target
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
-.DS_Store
-
-# OS
-Thumbs.db
+# real projects used for local tests (never commit them)
+/fixtures/
+*.flp

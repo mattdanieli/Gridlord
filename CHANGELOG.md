@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.0.0
+
+**FLP Organizer is now Gridlord**: rebuilt from scratch in Rust, with a new interface and macOS support.
+
+### New
+- New name, new icon and a completely redesigned interface (dark and light themes, resizable panels)
+- **Playlist preview:** see your playlist before and after, hover a clip to see its group
+- **macOS version** (Apple Silicon and Intel), next to Windows
+- **Batch mode:** drop several projects or a whole folder and organize them all at once
+- **Save options:** new file next to the original (default), new file in a folder of your choice,
+  or replace the original with an automatic backup copy
+- Group names now use the channel name you see in FL Studio, so automation clips get their real name
+  (for example "Filter - Cutoff") instead of a channel number
+- The "Type" sort now separates audio clips, patterns and automation clips
+- Every saved file is read back and verified before it replaces anything
+- Gridlord notices if a project was saved again in FL Studio after loading it, and reloads it
+- 7 languages: English (default), Chinese, German, Spanish, French, Italian, Russian
+
+### Changed
+- Multiple arrangements are now organized separately and correctly (track mute, names and colors
+  were previously taken from the last arrangement)
+- With rainbow colors on, each pattern without a color gets exactly one color event
+
+### Compatibility
+- Works with projects from FL Studio 2025 and newer (2024 and 20.7+ too). On real FL Studio 2026
+  projects the output matches FLP Organizer 1.6.1 byte for byte, apart from the improvements above.
+
 ## [1.6.1] - 2026-10-19
 
 ### Fixed
